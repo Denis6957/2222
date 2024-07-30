@@ -1,8 +1,8 @@
 {
-  "startTime": "2024-07-30T04:59:15.717Z",
-  "endTime": "2024-07-30T04:59:32.540Z",
+  "startTime": "2024-07-30T10:00:03.325Z",
+  "endTime": "2024-07-30T10:00:15.809Z",
   "userAgents": [
-    "Chrome 126.0.0.0 / Windows 10"
+    "Chrome 127.0.0.0 / Windows 10"
   ],
   "passed": 1,
   "total": 1,
@@ -10,14 +10,14 @@
   "fixtures": [
     {
       "name": "Login Page",
-      "path": "C:\\Users\\Admin\\Desktop\\PROJECT\\1111\\tests\\alert.test.js",
+      "path": "C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\registation.test.js",
       "meta": {},
       "tests": [
         {
-          "name": "Test delete product",
+          "name": "Test registration user on eDA-platform",
           "meta": {},
           "errs": [],
-          "durationMs": 16540,
+          "durationMs": 12197,
           "unstable": false,
           "screenshotPath": null,
           "skipped": false

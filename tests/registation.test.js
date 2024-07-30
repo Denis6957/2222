@@ -8,41 +8,48 @@ fixture `Login Page`
     .beforeEach(async t => {
         await t.resizeWindow(1920, 1080);
     });
+
 test('Test registration user on eDA-platform', async t => {
-//Set registration info
-    const inputNameCompany = Selector('input[name= "NameCompany"]');
-    const inputCityCompany = Selector('input[name= "CityCompany"]');
-    const inputINN = Selector('input[name= "INN"]');
-    const inputCEO = Selector('input[name= "CEO"]');
-    const inputContactFace = Selector('input[name= "ContactFace"]');
-    const inputPhoneNumber = Selector('input[name= "PhoneNumber"]');
-    const inputEmail = Selector('input').nth(6);
-    const CheckBoxNewLeed = Selector('span').withAttribute('class', "check");
-    const RegButton = Selector('button').withAttribute('type', "button");
+  // Set registration info
+  const inputNameCompany = Selector('.input-property [name="companyName"]');
+  const inputCityCompany = Selector('.input-property').nth(1).find('[name="companyCity"]');
+  const inputINN = Selector('.input-property').nth(2).find('[name="inn"]');
+  const inputCEO = Selector('.input-property').nth(3).find('[name="ownerName"]');
+  const inputContactFace = Selector('.input-property').nth(4).find('[name="contactPersonName"]');
+  const inputPhoneNumber = Selector('.input-property').nth(5).find('[name="phone"]');
+  const inputEmail = Selector('.input-property').nth(6).find('[name="email"]');
+  const CheckBoxNewLeed = Selector('.check');
+  const RegButton = Selector('button').withText('Зарегистрироваться');
+  const RegistrButton = Selector('#registreForm a').withText('Зарегистрироваться');
+  const Succes = Selector('div').withText('×').nth(8);
 
-// Set const succes registration
-    const Succes = Selector('alert-succes');
+  try {
+    // Navigate to registration form
+    await t.click(RegistrButton);
 
-await t 
-    .expect(inputNameCompany.exists).ok('No elements on page');
+    // Ensure registration form is loaded
+    await t.expect(inputNameCompany.exists).ok('No elements on page');
 
-// Write registration data
-    typeText(inputNameCompany, 'New Company')
-    typeText(inputCityCompany, 'Novokuznetsk')
-    typeText(inputINN, '11111111')
-    typeText(inputCEO, 'Ivanov Ivan Ivanovich')
-    typeText(inputContactFace, 'Demidov Dmitry Dmitrievich')
-    typeText(inputPhoneNumber, '79999999999')
-    typeText(inputEmail, 'email@email.com')
-// Add a delay before clicking the login button
-await t.wait(1000);
+    // Write registration data
+    await t
+      .typeText(inputNameCompany, 'New Company')
+      .typeText(inputCityCompany, 'Novokuznetsk')
+      .typeText(inputINN, '11111111')
+      .typeText(inputCEO, 'Ivanov Ivan Ivanovich')
+      .typeText(inputContactFace, 'Demidov Dmitry Dmitrievich')
+      .typeText(inputPhoneNumber, '79999999999')
+      .typeText(inputEmail, 'email@email.com');
 
-// Click on register button
-await t
-    .click(CheckBoxNewLeed);
-    click(RegButton);
+    // Click on register button
+    await t.click(CheckBoxNewLeed).click(RegButton);
 
-// Check succes registration
-await t
+    // Check successful registration
+    await t
     .expect(Succes.exists).ok('Successful registration message not found');
-})
+
+    console.log('Тест успешно пройден.');
+  } catch (error) {
+    console.error('Тест не пройден:', error);
+    throw error;
+  }
+});
