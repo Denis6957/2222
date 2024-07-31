@@ -10,7 +10,7 @@ fixture `Login Page`
     });
 
 test('Test registration user on eDA-platform', async t => {
-  // Set registration info
+
   const inputNameCompany = Selector('.input-property [name="companyName"]');
   const inputCityCompany = Selector('.input-property').nth(1).find('[name="companyCity"]');
   const inputINN = Selector('.input-property').nth(2).find('[name="inn"]');
@@ -24,13 +24,11 @@ test('Test registration user on eDA-platform', async t => {
   const Succes = Selector('div').withText('×').nth(8);
 
   try {
-    // Navigate to registration form
+    
     await t.click(RegistrButton);
 
-    // Ensure registration form is loaded
     await t.expect(inputNameCompany.exists).ok('No elements on page');
 
-    // Write registration data
     await t
       .typeText(inputNameCompany, 'New Company')
       .typeText(inputCityCompany, 'Novokuznetsk')
@@ -40,10 +38,8 @@ test('Test registration user on eDA-platform', async t => {
       .typeText(inputPhoneNumber, '79999999999')
       .typeText(inputEmail, 'email@email.com');
 
-    // Click on register button
     await t.click(CheckBoxNewLeed).click(RegButton);
 
-    // Check successful registration
     await t
     .expect(Succes.exists).ok('Successful registration message not found');
 

@@ -27,8 +27,8 @@ test('Test delete product', async t => {
         console.log('Login button found.');
 
         await t.wait(300)
-            .typeText(emailInput, 'support-p400@m.ru')
-            .typeText(passwordInput, 'qazQAZ')
+            .typeText(emailInput, config.username) 
+            .typeText(passwordInput, config.password)
             .click(loginButton);
         console.log('Logged in with provided credentials.');
 

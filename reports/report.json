@@ -1,6 +1,6 @@
 {
-  "startTime": "2024-07-30T10:00:03.325Z",
-  "endTime": "2024-07-30T10:00:15.809Z",
+  "startTime": "2024-07-31T05:58:19.947Z",
+  "endTime": "2024-07-31T05:58:46.245Z",
   "userAgents": [
     "Chrome 127.0.0.0 / Windows 10"
   ],
@@ -10,14 +10,14 @@
   "fixtures": [
     {
       "name": "Login Page",
-      "path": "C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\registation.test.js",
+      "path": "C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\addproduct.test.js",
       "meta": {},
       "tests": [
         {
-          "name": "Test registration user on eDA-platform",
+          "name": "User can log in and add a product with a photo",
           "meta": {},
           "errs": [],
-          "durationMs": 12197,
+          "durationMs": 25926,
           "unstable": false,
           "screenshotPath": null,
           "skipped": false

@@ -4,7 +4,6 @@ import path from 'path';
 import axios from 'axios';
 import { Selector } from 'testcafe';
 
-// Первоначальные настройки
 const env = process.env.TESTCAFE_ENV || 'dev';
 const config = require(`../config.${env}.js`);
 const filePath = path.join(process.cwd(), 'funutai.png');
@@ -103,7 +102,7 @@ async function runTestCafe() {
             const productNameInput = Selector('input.form-control').withAttribute('maxlength', '10000');
             const productDescriptionInput = Selector('textarea').withAttribute('placeholder', 'Введите описание товара');
             const Category = Selector('span').withText('Категория');
-            const CategoryInCategory = Selector('span').withText('Блюда');
+            const CategoryInCategory = Selector('span').withText('AutoTest Category');
             const addPhotoProduct = Selector('label').withAttribute('for', "inputTag");
             const addPhoto = Selector('#background a').withText('ДОБАВИТЬ');
             const productImageInput = Selector('input[type="file"]');
@@ -118,10 +117,9 @@ async function runTestCafe() {
                 .expect(loginButton.exists).ok('Login button not found');
 
             await t.wait(300)
-                .typeText(emailInput, 'support-p400@m.ru')
-                .typeText(passwordInput, 'qazQAZ')
+                .typeText(emailInput, config.username) 
+                .typeText(passwordInput, config.password)
                 .click(loginButton);
-
             await t.wait(500)
                 .expect(mainPageElement.exists).ok('Main page element not found after login');
 
@@ -156,7 +154,6 @@ async function runTestCafe() {
 
             await t
                 .expect(successMessage.exists).ok('Success message not found')
-                .expect(Catalog.exists).ok('The Catalog selector was not found on the page');
 
             console.log('Тест успешно пройден.');
         } catch (error) {

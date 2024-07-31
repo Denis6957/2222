@@ -23,9 +23,9 @@ test('Test delete product', async t => {
         .expect(passwordInput.exists).ok('Password input not found')
         .expect(loginButton.exists).ok('Login button not found'); 
 
-    await t.wait(300)
-        .typeText(emailInput, 'support-p400@m.ru')
-        .typeText(passwordInput, 'qazQAZ')
+        await t.wait(300)
+        .typeText(emailInput, config.username) 
+        .typeText(passwordInput, config.password)
         .click(loginButton);
 
     await t.wait(500)

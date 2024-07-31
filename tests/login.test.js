@@ -21,9 +21,10 @@ test('User can log in with valid credentials', async t => {
         .expect(passwordInput.exists).ok('Password input not found')
         .expect(loginButton.exists).ok('Login button not found');
 
-    await t
-        .typeText(emailInput, 'admin')
-        .typeText(passwordInput, 'pass1234');
+        await t.wait(300)
+        .typeText(emailInput, config.username) 
+        .typeText(passwordInput, config.password)
+        .click(loginButton);
 
     await t.wait(4000);
 
