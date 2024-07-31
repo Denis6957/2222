@@ -49,3 +49,4 @@ test('Test registration user on eDA-platform', async t => {
     throw error;
   }
 });
+

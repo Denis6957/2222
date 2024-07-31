@@ -56,3 +56,4 @@ function installAllPackages() {
 
 updatePackageJson();
 installAllPackages();
+
