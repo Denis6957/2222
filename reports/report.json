@@ -1,23 +1,25 @@
 {
-  "startTime": "2024-07-31T05:58:19.947Z",
-  "endTime": "2024-07-31T05:58:46.245Z",
+  "startTime": "2024-08-01T08:18:46.069Z",
+  "endTime": "2024-08-01T08:19:07.765Z",
   "userAgents": [
     "Chrome 127.0.0.0 / Windows 10"
   ],
-  "passed": 1,
+  "passed": 0,
   "total": 1,
   "skipped": 0,
   "fixtures": [
     {
-      "name": "Login Page",
-      "path": "C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\addproduct.test.js",
+      "name": "Promo Products Test",
+      "path": "C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\sale.test.js",
       "meta": {},
       "tests": [
         {
-          "name": "User can log in and add a product with a photo",
+          "name": "Test adding and deleting a promo product",
           "meta": {},
-          "errs": [],
-          "durationMs": 25926,
+          "errs": [
+            "The specified selector does not match any element in the DOM tree.\n\n > | Selector('#wrapper .multiselect__tags')\n   |   .nth(19)\n\nBrowser: Chrome 127.0.0.0 / Windows 10\n\n   51 |        await t\n   52 |            .click(loyaltySectionButton)\n   53 |            .click(SaleButton)\n   54 |            .click(AddSaleButton)\n   55 |            .click(SelectCategory)\n > 56 |            .click(SelectProductReward);\n   57 |        \n   58 |        } catch (error) {\n   59 |            console.error('Тест не пройден:', error);\n   60 |            throw error; \n   61 |        }\n\n   at <anonymous> (C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\sale.test.js:56:14)\n   at asyncGeneratorStep (C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\sale.test.js:1:37)\n   at _next (C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\sale.test.js:1:37)"
+          ],
+          "durationMs": 21344,
           "unstable": false,
           "screenshotPath": null,
           "skipped": false
