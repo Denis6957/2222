@@ -7,6 +7,7 @@ fixture `Promo Products Test`
     .page `${config.baseUrl}/#/login?logout=true`
     .beforeEach(async t => {
         await t.resizeWindow(1920, 1080);
+       
     });
 
 test('Test adding and deleting a promo product', async t => {
@@ -43,17 +44,43 @@ test('Test adding and deleting a promo product', async t => {
         const AddSaleButton = Selector('main button').withText('ДОБАВИТЬ');
         const inputNameSale = Selector('#wrapper .form-control').nth(1);
         const inputDescriptionSale = Selector('#wrapper .custom-scroll.simple-text-area');
-        const inputPercentSale = Selector('#wrapper .form-control').nth(2);
+        const inputPriceWithoutDiscount = Selector('#wrapper .form-control').nth(3);
+        const inputPriceWithDiscount = Selector('#wrapper .form-control').nth(4);
         const SelectCategory = Selector('#wrapper span').withText('Укажите категорию');
-        const SelectProduct = Selector('#wrapper span').withText('Укажите товар');
-        const SelectProductReward = Selector('#wrapper .multiselect__tags').nth(19);
+        const SetTime = Selector('#wrapper .check').nth(2);
+        const SelectProductReward = Selector('#wrapper .multiselect__tags').nth(2);
+        const SelectDate = Selector('#wrapper .mx-input');
+        const StartDate = Selector('tbody')('title', '15.08.2029');
+        const DueDate = Selector('tr').withAttribute ('title', '21.08.2036');
+        const NextPage = Selector('a').withAttribute('class', 'mx-icon-next-year').withText('»');
 
         await t
             .click(loyaltySectionButton)
             .click(SaleButton)
             .click(AddSaleButton)
             .click(SelectCategory)
-            .click(SelectProductReward);
+            .click(SelectProductReward)
+            .typeText(SelectProductReward, 'Test Product')
+            .pressKey('enter')
+            .typeText(inputNameSale, 'Test Sale')
+            .typeText(inputDescriptionSale, 'Test descriotion sale')
+            .typeText(inputPriceWithoutDiscount, '100')
+            .typeText(inputPriceWithDiscount, '50')
+            .click(SetTime);
+
+        await t
+            .click(SelectDate)
+            .click(NextPage)
+            .click(NextPage)
+            .click(NextPage)
+            .click(NextPage)
+            .click(NextPage)
+            .click(StartDate)
+            .click(DueDate);
+
+        await t
+            .debug();
+
         
         } catch (error) {
             console.error('Тест не пройден:', error);
