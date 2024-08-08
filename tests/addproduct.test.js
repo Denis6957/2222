@@ -104,11 +104,11 @@ async function runTestCafe() {
             const Category = Selector('span').withText('Категория');
             const CategoryInCategory = Selector('span').withText('AutoTest Category');
             const addPhotoProduct = Selector('label').withAttribute('for', "inputTag");
-            const addPhoto = Selector('#background a').withText('ДОБАВИТЬ');
+            const addPhoto = Selector('#background button').withText('ДОБАВИТЬ');
             const productImageInput = Selector('input[type="file"]');
             const productPriceInput = Selector('input.form-control').withAttribute('maxlength', '100');
-            const saveProductButton = Selector('#wrapper a').withText('СОХРАНИТЬ').nth(1);
-            const successMessage = Selector('#wrapper div').withText('×').nth(6);
+            const saveProductButton = Selector('#wrapper a').withText('СОХРАНИТЬ И ВЕРНУТЬСЯ К СПИСКУ');
+            const successMessage = Selector('#wrapper i').withText('edit');
             const mainPageElement = Selector('#wrapper');
 
             await t.wait(300)

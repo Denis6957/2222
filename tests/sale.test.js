@@ -3,7 +3,7 @@ import { Selector } from 'testcafe';
 const env = process.env.TESTCAFE_ENV || 'dev';
 const config = require(`../config.${env}.js`);
 
-fixture `Promo Products Test`
+fixture `Sale for products test`
     .page `${config.baseUrl}/#/login?logout=true`
     .beforeEach(async t => {
         await t.resizeWindow(1920, 1080);
@@ -49,10 +49,8 @@ test('Test adding and deleting a promo product', async t => {
         const SelectCategory = Selector('#wrapper span').withText('Укажите категорию');
         const SetTime = Selector('#wrapper .check').nth(2);
         const SelectProductReward = Selector('#wrapper .multiselect__tags').nth(2);
-        const SelectDate = Selector('#wrapper .mx-input');
-        const StartDate = Selector('tbody')('title', '15.08.2029');
-        const DueDate = Selector('tr').withAttribute ('title', '21.08.2036');
-        const NextPage = Selector('a').withAttribute('class', 'mx-icon-next-year').withText('»');
+        const SelectDate = Selector('#wrapper .mx-input')
+        const SaveSale = Selector('#wrapper a').withText('ДОБАВИТЬ И ВЕРНУТЬСЯ К СПИСКУ');
 
         await t
             .click(loyaltySectionButton)
@@ -70,16 +68,13 @@ test('Test adding and deleting a promo product', async t => {
 
         await t
             .click(SelectDate)
-            .click(NextPage)
-            .click(NextPage)
-            .click(NextPage)
-            .click(NextPage)
-            .click(NextPage)
-            .click(StartDate)
-            .click(DueDate);
+            .typeText(SelectDate, '17.08.2035 ~ 14.08.2070')
+            .click(SaveSale);
 
         await t
-            .debug();
+            .expect(loyaltySectionButton.exists).ok('Discount was not created. Exit to list failed.');
+
+        console.log ('Тест успешно пройден');
 
         
         } catch (error) {

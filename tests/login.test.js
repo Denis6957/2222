@@ -4,8 +4,10 @@ const env = process.env.TESTCAFE_ENV || 'dev';
 const config = require(`../config.${env}.js`);
 
 fixture `Login Page`
-    .page `${config.baseUrl}/#/login?logout=true`;
-
+    .page `${config.baseUrl}/#/login?logout=true`
+    .beforeEach(async t => {
+        await t.resizeWindow(1920, 1080);
+    });
 test('User can log in with valid credentials', async t => {
 
     try {
@@ -13,7 +15,7 @@ test('User can log in with valid credentials', async t => {
     const emailInput = Selector('input[name="login"]');
     const passwordInput = Selector('input[name="password"]');
     const loginButton = Selector('button').withText('Вход').withAttribute('type', 'button');
-    const mainPageElement = Selector('#wrapper');
+    const mainPageElement = Selector('#wrapper i').withText('person');
 
 
     await t
@@ -25,12 +27,6 @@ test('User can log in with valid credentials', async t => {
         .typeText(emailInput, config.username) 
         .typeText(passwordInput, config.password)
         .click(loginButton);
-
-    await t.wait(4000);
-
-    await t
-        .click(loginButton)
-        .wait(2000);
 
     await t
         .expect(mainPageElement.exists).ok('Main page element not found after login');

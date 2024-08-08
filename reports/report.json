@@ -1,25 +1,23 @@
 {
-  "startTime": "2024-08-02T07:06:16.078Z",
-  "endTime": "2024-08-02T07:06:40.946Z",
+  "startTime": "2024-08-08T09:53:44.327Z",
+  "endTime": "2024-08-08T09:53:56.557Z",
   "userAgents": [
     "Chrome 127.0.0.0 / Windows 10"
   ],
-  "passed": 0,
+  "passed": 1,
   "total": 1,
   "skipped": 0,
   "fixtures": [
     {
-      "name": "Promo Products Test",
+      "name": "Sale for products test",
       "path": "C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\sale.test.js",
       "meta": {},
       "tests": [
         {
           "name": "Test adding and deleting a promo product",
           "meta": {},
-          "errs": [
-            "The specified selector does not match any element in the DOM tree.\n\n > | Selector('tr')\n   |   .withAttribute('title', '21.08.2036')\n\nBrowser: Chrome 127.0.0.0 / Windows 10\n\n   74 |            .click(NextPage)\n   75 |            .click(NextPage)\n   76 |            .click(NextPage)\n   77 |            .click(NextPage)\n   78 |            .click(StartDate)\n > 79 |            .click(DueDate);\n   80 |\n   81 |        await t\n   82 |            .debug();\n   83 |\n   84 |        \n\n   at <anonymous> (C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\sale.test.js:79:14)\n   at asyncGeneratorStep (C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\sale.test.js:1:37)\n   at _next (C:\\Users\\Admin\\Desktop\\PROJECT\\2222\\tests\\sale.test.js:1:37)"
-          ],
-          "durationMs": 24523,
+          "errs": [],
+          "durationMs": 11936,
           "unstable": false,
           "screenshotPath": null,
           "skipped": false
